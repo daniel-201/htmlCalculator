@@ -1,0 +1,50 @@
+.innen {
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+h1 {
+  color: white;
+}
+
+body {
+  background-color: #233042;
+}
+
+input {
+  background-color: #233042;
+  color: white;
+}
+
+table {
+  background-color: white;
+  border-radius: 12px;
+}
+
+td {
+  border-radius: 12px;
+  border-color: #233042;
+}
+
+input[type=text] {
+  width: 17.29em;
+  border-radius: 6px;
+}
+
+input[type=button] {
+  border-radius: 12px;
+  outline: none;
+}
+
+input {
+  width: 4em;
+}
+
+.wide {
+  width: 5.45em;
+}
+
+html {
+  margin-left: 20px;
+  font-family: "consolas";
+}

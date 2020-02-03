@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Taschenrechner</title>
+    <link rel="stylesheet" type="text/css" href="TRstylesheet.css">
+    <script src="bib.js"></script>
+  </head>
+<script>
+  // Zeichen hinzufügen
+  function Hinzufuegen(Zeichen) {
+     window.document.TR.Display.value = window.document.TR.Display.value + Zeichen;
+     }
+
+  // Alle Zahlen löschen
+  function löschen() {
+    window.document.TR.Display.value = '';
+  }
+
+  // Eine Zahl löschen
+  function charLöschen() {
+    window.document.TR.Display.value = window.document.TR.Display.value.substring(0, window.document.TR.Display.value.length - 1)
+  }
+
+  // Negatives Vorzeichen
+  function negativ(){
+    x = eval(window.document.TR.Display.value);
+    window.document.TR.Display.value = (-1) * x;
+  }
+
+  // Rechenoperationen
+  function ergebnis() {
+    document.getElementById("eingabe").value = eval(document.getElementById("eingabe").value);
+  }
+
+  // Hoch 2
+  function square() {
+    document.getElementById("eingabe").value = document.getElementById("eingabe").value * document.getElementById("eingabe").value
+  }
+
+  // Kehrbruch
+  function kehrbruch() {
+    document.getElementById("eingabe").value = 1/(document.getElementById("eingabe").value);
+  }
+
+  // Wert für degree/radian
+  var wert = 1;
+
+  // Radian zu degree umwandeln
+  function radToDeg(x) {
+    if (wert == 0) {
+      x = 2 * Math.PI/360 * x;
+      return x;
+    } else {
+      return x;
+    }
+  }
+
+  function sinT() {
+    var x = document.getElementById("eingabe").value;
+    x = radToDeg(x);
+    x = piSmall(x);
+    x = sin(x, 1.0e-16);
+    x = x.toFixed(10);
+    document.getElementById("eingabe").value = x;
+  }
+
+  function arcsinT() {
+    var x = parseFloat(document.getElementById("eingabe").value);
+    x = radToDeg(x);
+    x = arcsin(x, 1.0e-16);
+    document.getElementById("eingabe").value = x;
+  }
+
+  function cosT() {
+    var x = parseFloat(document.getElementById("eingabe").value);
+    x = radToDeg(x);
+    x = piSmall(x);
+    x = cos(x, 1.0e-16);
+    document.getElementById("eingabe").value = x;
+  }
+
+  function arccosT() {
+    var x = parseFloat(document.getElementById("eingabe").value);
+    x = radToDeg(x);
+    x = arccos(x, 1.0e-16);
+    document.getElementById("eingabe").value = x;
+  }
+
+  function tanT() {
+    var x = parseFloat(document.getElementById("eingabe").value);
+    x = radToDeg(x);
+    x = piSmall(x);
+    x = tan(x, 1.0e-16);
+    document.getElementById("eingabe").value = x;
+  }
+
+  function radian() {
+    window.document.TR.rad.value = 'R';
+    wert = 1;
+  }
+
+  function degree() {
+    window.document.TR.rad.value = 'D';
+    wert = 0;
+  }
+
+  function e() {
+    var e = Math.E;
+    document.getElementById("eingabe").value = e;
+    return document.getElementById("eingabe").value;
+  }
+
+  function Pi() {
+    var pi = Math.PI;
+    document.getElementById("eingabe").value = pi;
+    return document.getElementById("eingabe").value;
+  }
+
+  function squarerootT() {
+    var x = document.getElementById("eingabe").value;
+    x = squareroot(x);
+    document.getElementById("eingabe").value = x;
+  }
+
+  function potenz() {
+    var x = document.getElementById("eingabe").value;
+    var potenz = prompt("Geben Sie die Potenz ein");
+    x = x ** potenz;
+    document.getElementById("eingabe").value = x;
+  }
+
+  function lnT() {
+    x = parseFloat(document.getElementById("eingabe").value);
+    x = ln(x);
+    document.getElementById("eingabe").value = x;
+  }
+
+  function log() {
+    var x = parseFloat(document.getElementById("eingabe").value);
+    var b = parseFloat(prompt("Geben Sie die Basis ein"));
+    var log = ln(x)/ln(b);
+    document.getElementById("eingabe").value = log;
+  }
+
+  function ehochx() {
+    var x = document.getElementById("eingabe").value;
+    x = Math.E ** x;
+    document.getElementById("eingabe").value = x;
+  }
+
+
+</script>
+    <body>
+      <h1>Taschenrechner</h1>
+      <form name="TR">
+        <table border=2 cellpadding=20>
+        <tr>
+          <td><input type=text name="Display" id="eingabe" size="30" maxlenght="30"></td>
+        </tr>
+        <tr><td class="innen">
+        <table>
+          <tr>
+            <td><input type=button value="   7   " onClick="Hinzufuegen(7)"></td>
+            <td><input type=button value="   8   " onClick="Hinzufuegen(8)"></td>
+            <td><input type=button value="   9   " onClick="Hinzufuegen(9)"></td>
+            <td><input type=button value="   +   " onClick="Hinzufuegen('+')"></td>
+          </tr>
+          <tr>
+            <td><input type=button value="   4   " onClick="Hinzufuegen(4)"></td>
+            <td><input type=button value="   5   " onClick="Hinzufuegen(5)"></td>
+            <td><input type=button value="   6   " onClick="Hinzufuegen(6)"></td>
+            <td><input type=button value="    -    " onClick="Hinzufuegen('-')"></td>
+          </tr>
+          <tr>
+            <td><input type=button value="   1   " onClick="Hinzufuegen(1)"></td>
+            <td><input type=button value="   2   " onClick="Hinzufuegen(2)"></td>
+            <td><input type=button value="   3   " onClick="Hinzufuegen(3)"></td>
+            <td><input type=button value="    &#215;    " onClick="Hinzufuegen('*')"></td> <!-- Entity: Multiplikation-->
+          </tr>
+          <tr>
+            <td><input type=button value="    =    " onclick="ergebnis()"></td>
+            <td><input type=button value="   0   " onClick="Hinzufuegen(0)"></td>
+            <td><input type=button value="    .    " onClick="Hinzufuegen('.')"></td>
+            <td><input type=button value="    &#247;    " onClick="Hinzufuegen('/')"></td> <!-- Entity: Division-->
+          </tr>
+          <tr>
+            <td><input  type=button value="    &#960;    " onClick="Pi()"></td>  <!-- Entity: Pi-->
+            <td><input  type=button value="   (-)    " onClick="negativ()"></td>
+            <td><input  type=button value="  del    " onCLick="charLöschen()"></td>
+            <td><input  type=button value="   C    " onClick="löschen()"></td>
+          </tr>
+          <tr>
+          <tr>
+            <td><input type=button value="   &#8730;    " onClick="squarerootT()"></td>     <!-- Entity: Wurzel-->
+            <td><input type=button value="  x&#178; " onClick="square()"></td>         <!-- Entity: hoch 2-->
+            <td><input type=button value="  x&oline; &#185;" onClick="kehrbruch()"></td>  <!-- Entity: hoch -1-->
+            <td><input type=button value="   x&#170   " onClick="potenz()"></td>             <!--Entity: hoch a -->
+          </tr>
+          <table>
+          <tr>
+            <td><input type=button value="   log      " onClick="log()"></td>
+            <td><input type=button value="    ln      " onClick="lnT()"></td>
+            <td><input type=button value="    e       " onClick="e()"></td>
+            <td><input type=button value="   e&#170     " onClick="ehochx()"></td>
+          </tr>
+          </table>
+          <table>
+          <tr>
+            <td><input class="wide" type=button value="   sin     " onClick="sinT()"></td>
+            <td><input class="wide" type=button value="    cos     " onClick="cosT()"></td>
+            <td><input class="wide" type=button value="     tan     " onClick="tanT()"></td>
+          </tr>
+          <tr>
+            <td><input class="wide" type=button value="    sin&oline; &#185;   " onClick="arcsinT()"></td> <!-- Entity: hoch -1 -->
+            <td><input class="wide" type=button value="    cos&oline; &#185;   " onClick="arccosT()"></td> <!-- Entity: hoch -1 -->
+            <td><input class="wide" type=button value="     tan&oline; &#185;   "></td> <!-- Entity: hoch -1 -->
+          </tr>
+          <tr>
+            <td><input class="wide" type=button value="  rad   " onClick="radian()"></td>
+            <td><input class="wide" type=button value=" deg  " onClick="degree()"></td>
+            <td><input class="wide" type=button value="  R  " name="rad"></td>
+          </tr>
+          </table>
+          </tr>
+        </table>
+        </td></tr>
+      </form>
+    </body>
+</html>
